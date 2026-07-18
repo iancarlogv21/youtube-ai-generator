@@ -1,32 +1,281 @@
-# React + TypeScript + Vite
+# 🎬 AI YouTube Video Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> An AI-powered web application that transforms a script into an editable storyboard for YouTube video creation.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📖 About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+AI YouTube Video Generator is a full-stack web application that helps content creators convert a script into an editable storyboard before generating a complete AI-powered video.
 
-## Expanding the Oxlint configuration
+The application analyzes a script, breaks it into scenes, and allows users to edit narration, visual descriptions, keywords, and durations before the video generation process.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+This project is currently under active development as part of my software engineering portfolio.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+# ✨ Current Features
+
+### 📝 Script Analyzer
+
+- Paste a script
+- Analyze script into multiple scenes
+- Automatic scene segmentation
+
+### 🎬 Scene Editor
+
+- ✏️ Edit narration
+- 🎨 Edit visual description
+- 🏷️ Edit search keywords
+- ⏱️ Edit estimated duration
+- ➕ Add scenes
+- 🗑️ Delete scenes
+- 📄 Duplicate scenes
+- ⬆️ Move scenes up
+- ⬇️ Move scenes down
+
+### 🔌 Backend API
+
+- FastAPI REST API
+- Pydantic validation
+- Modular backend architecture
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React
+- TypeScript
+- Vite
+- CSS
+
+## Backend
+
+- FastAPI
+- Python
+- Pydantic
+
+## Development Tools
+
+- Git
+- GitHub
+- VS Code
+
+---
+
+# 📸 Screenshots
+
+## Dashboard
+
+
+
+![Dashboard](docs\dashboard.png)
+
+---
+
+## Scene Editor
+
+
+
+![Scene Editor](docs/scene-editor.png)
+
+---
+
+# 📂 Project Structure
+
+```text
+youtube-ai-generator
+│
+├── backend
+│   ├── routers
+│   ├── schemas
+│   ├── services
+│   ├── main.py
+│   └── requirements.txt
+│
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   └── types
+│   │
+│   ├── package.json
+│   └── vite.config.ts
+│
+└── README.md
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/iancarlogv21/youtube-ai-generator.git
+```
+
+## Backend
+
+```bash
+cd backend
+
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+```
+
+Backend will run at:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger API Documentation:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend will run at:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🗺 Development Roadmap
+
+##  Sprint 1 — Foundation
+
+- Project setup
+- React + TypeScript
+- FastAPI backend
+- REST API
+- Script Analyzer
+
+---
+
+##  Sprint 2 — Scene Editor
+
+- Edit Scene
+- Add Scene
+- Delete Scene
+- Duplicate Scene
+- Reorder Scene
+- Component Refactoring
+
+---
+
+## 🚧 Sprint 3 — AI Scene Generation (Current)
+
+- OpenAI Integration
+- AI Storyboard Generation
+- Better Visual Descriptions
+- Smarter Keywords
+
+---
+
+## 📅 Future Plans
+
+- 🎥 Stock Video Search (Pexels)
+- 🖼 AI Image Generation
+- 🎙 AI Voice Generation
+- 🎞 Timeline Editor
+- ✂️ FFmpeg Video Rendering
+- 📝 Subtitle Generation
+- 📤 Export MP4
+- 🔐 User Authentication
+- ☁ Cloud Deployment
+
+---
+
+# 🏗 Architecture
+
+```text
+Script
+    │
+    ▼
+FastAPI Backend
+    │
+    ▼
+Scene Analyzer
+    │
+    ▼
+Scene Editor
+    │
+    ▼
+Media Search
+    │
+    ▼
+Voice Generation
+    │
+    ▼
+FFmpeg
+    │
+    ▼
+Export MP4
+```
+
+---
+
+# 🎯 Learning Goals
+
+This project is being developed to strengthen my skills in:
+
+- Full-Stack Web Development
+- React
+- TypeScript
+- FastAPI
+- REST API Design
+- AI Application Development
+- Software Architecture
+- Git & GitHub
+
+---
+
+# 👨‍💻 Author
+
+**Ian Carlo Ventura**
+
+Bachelor of Science in Information Technology (BSIT)
+
+City College of San Fernando, Pampanga
+
+GitHub: 
+
+---
+
+# ⭐ Project Status
+
+🚧 **Currently in Active Development**
+
+The project is continuously being improved as new AI features are implemented.
+
