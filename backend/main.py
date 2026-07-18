@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routers.scenes import router as scenes_router
 
+from services.ai_service import test_ai_connection
+
+from fastapi import HTTPException
+
 app = FastAPI(
     title="AI YouTube Video Generator API",
     version="0.1.0",
@@ -31,3 +35,17 @@ def health_check() -> dict[str, str]:
     return {
         "status": "healthy"
     }
+
+@app.get("/api/ai/test")
+def test_ai():
+    try:
+        return {
+            "message": test_ai_connection()
+        }
+    except Exception as error:
+        print(f"Gemini error: {type(error).__name__}: {error}")
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"{type(error).__name__}: {error}"
+        )
