@@ -77,7 +77,7 @@ This project is currently under active development as part of my software engine
 
 
 
-![Dashboard](docs\dashboard.png)
+![Dashboard](./docs/dashboard.png)
 
 ---
 
