@@ -47,12 +47,16 @@ function ScriptForm({ onAnalyze, isLoading }: ScriptFormProps) {
         </p>
 
         <button
-          type="submit"
-          disabled={isLoading || !script.trim()}
-          className="rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {isLoading ? "Analyzing..." : "Analyze Script"}
-        </button>
+  type="submit"
+  disabled={isLoading || !script.trim()}
+  className="flex min-w-40 items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+>
+  {isLoading && (
+    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+  )}
+
+  {isLoading ? "Generating Scenes..." : "Generate Scenes"}
+</button>
       </div>
     </form>
   );
