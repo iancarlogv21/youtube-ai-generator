@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from routers import images
 from fastapi.middleware.cors import CORSMiddleware
 
 from routers.scenes import router as scenes_router
@@ -11,6 +12,8 @@ app = FastAPI(
     title="AI YouTube Video Generator API",
     version="0.1.0",
 )
+
+app.include_router(images.router)
 
 app.add_middleware(
     CORSMiddleware,

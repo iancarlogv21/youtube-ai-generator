@@ -10,3 +10,10 @@ export type Scene = {
 export type SceneAnalysisResponse = {
   scenes: Scene[];
 };
+
+export type ImageSearchResponse = {
+  image_url: string;
+  photographer: string;
+  photographer_url: string;
+  source: string;
+};
