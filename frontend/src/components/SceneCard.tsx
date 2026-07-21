@@ -83,6 +83,24 @@ function SceneCard({
 
       <div className="mt-5">
         <label className="mb-2 block text-xs uppercase text-slate-500">
+          Image Prompt
+        </label>
+
+        <textarea
+          value={scene.image_prompt}
+          onChange={(event) =>
+            onUpdateScene(scene.scene_number, {
+              ...scene,
+              image_prompt: event.target.value,
+            })
+          }
+          rows={4}
+          className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
+        />
+      </div>
+
+      <div className="mt-5">
+        <label className="mb-2 block text-xs uppercase text-slate-500">
           Duration in seconds
         </label>
 

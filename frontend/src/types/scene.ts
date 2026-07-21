@@ -3,6 +3,7 @@ export type Scene = {
   narration: string;
   keyword: string;
   visual_description: string;
+  image_prompt: string;
   estimated_duration: number;
 };
 

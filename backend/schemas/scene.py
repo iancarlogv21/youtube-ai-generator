@@ -5,11 +5,14 @@ class ScriptRequest(BaseModel):
     script: str = Field(min_length=1)
 
 
+from pydantic import BaseModel
+
 class Scene(BaseModel):
     scene_number: int
     narration: str
     keyword: str
     visual_description: str
+    image_prompt: str
     estimated_duration: int
 
 

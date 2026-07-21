@@ -54,6 +54,10 @@ Requirements:
 - Each scene must contain a natural narration segment.
 - Create one short keyword representing the main visual subject.
 - Write a detailed visual description suitable for finding or generating video footage.
+- Generate a professional cinematic AI image prompt for each scene.
+- The image prompt should be highly descriptive and suitable for AI image generators like Flux, Stable Diffusion, Leonardo AI, or Google Imagen.
+- Include lighting, camera angle, composition, realism, quality, and environment when appropriate.
+- Do not mention text overlays, subtitles, watermarks, logos, or UI.
 - Estimate the duration in whole seconds.
 - Use approximately 2 to 4 spoken words per second.
 - Keep scenes short and visually focused.
