@@ -8,12 +8,18 @@ from services.ai_service import test_ai_connection
 
 from fastapi import HTTPException
 
+from routers import videos
+
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
 app = FastAPI(
     title="AI YouTube Video Generator API",
     version="0.1.0",
 )
 
 app.include_router(images.router)
+app.include_router(videos.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -52,3 +58,16 @@ def test_ai():
             status_code=500,
             detail=f"{type(error).__name__}: {error}"
         )
+
+
+
+BASE_DIR = Path(__file__).resolve().parent
+GENERATED_VIDEOS_DIR = BASE_DIR / "generated_videos"
+
+GENERATED_VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
+
+app.mount(
+    "/generated-videos",
+    StaticFiles(directory=GENERATED_VIDEOS_DIR),
+    name="generated-videos",
+)    

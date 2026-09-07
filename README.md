@@ -279,3 +279,7 @@ GitHub:
 
 The project is continuously being improved as new AI features are implemented.
 
+
+## Sprint 9: Cinematic Video Export
+
+Video export now supports varied camera motion, crossfades, opening/closing fades, landscape and vertical Shorts output, and render-stage progress. See [Sprint 9 usage, API, and verification](docs/sprint-9.md).

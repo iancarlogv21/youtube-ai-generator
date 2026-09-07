@@ -5,6 +5,7 @@ import httpx
 from dotenv import load_dotenv
 
 from schemas.image import ImageSearchResponse
+import random
 
 
 ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
@@ -25,10 +26,10 @@ async def search_image(query: str) -> ImageSearchResponse:
     }
 
     params = {
-        "query": query,
-        "per_page": 1,
-        "orientation": "landscape"
-    }
+    "query": query,
+    "per_page": 5,
+    "orientation": "landscape"
+}
 
     async with httpx.AsyncClient(timeout=10.0) as client:
         response = await client.get(
@@ -45,7 +46,7 @@ async def search_image(query: str) -> ImageSearchResponse:
     if not photos:
         raise ValueError(f"No image found for: {query}")
 
-    photo = photos[0]
+    photo = random.choice(photos)
 
     return ImageSearchResponse(
         image_url=photo["src"]["large"],

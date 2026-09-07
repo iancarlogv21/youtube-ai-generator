@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { searchImage } from "../services/imageApi";
-import type { ImageSearchResponse, Scene } from "../types/scene";
+import type { Scene } from "../types/scene";
 
 type SceneCardProps = {
   scene: Scene;
@@ -14,8 +14,8 @@ function SceneCard({
   onUpdateScene,
   onDeleteScene,
 }: SceneCardProps) {
-  const [imageResult, setImageResult] =
-    useState<ImageSearchResponse | null>(null);
+  
+    
 
   const [isSearchingImage, setIsSearchingImage] = useState(false);
   const [imageError, setImageError] = useState("");
@@ -33,7 +33,11 @@ function SceneCard({
       setImageError("");
 
       const result = await searchImage(query);
-      setImageResult(result);
+
+onUpdateScene(scene.scene_number, {
+  ...scene,
+  image: result,
+});
     } catch (error) {
       console.error(error);
       setImageError("Failed to find an image for this scene.");
@@ -58,10 +62,11 @@ function SceneCard({
         </button>
       </div>
 
-      {imageResult && (
+      {scene.image && !isSearchingImage && (
+        
         <div className="mt-5 overflow-hidden rounded-xl border border-slate-700 bg-slate-950">
           <img
-            src={imageResult.image_url}
+            src={scene.image.image_url}
             alt={`Scene ${scene.scene_number} preview`}
             className="aspect-video w-full object-cover"
           />
@@ -70,19 +75,30 @@ function SceneCard({
             <span>
               Photo by{" "}
               <a
-                href={imageResult.photographer_url}
+                href={scene.image.photographer_url}
                 target="_blank"
                 rel="noreferrer"
                 className="font-medium text-blue-400 hover:underline"
               >
-                {imageResult.photographer}
+                {scene.image.photographer}
               </a>
             </span>
 
-            <span>Source: {imageResult.source}</span>
+            <span>Source: {scene.image.source}</span>
           </div>
         </div>
       )}
+
+      {isSearchingImage && (
+  <div className="mt-5 overflow-hidden rounded-xl border border-slate-700 bg-slate-950">
+    <div className="aspect-video w-full animate-pulse bg-slate-800" />
+
+    <div className="space-y-2 px-4 py-3">
+      <div className="h-3 w-40 animate-pulse rounded bg-slate-800" />
+      <div className="h-3 w-24 animate-pulse rounded bg-slate-800" />
+    </div>
+  </div>
+)}
 
       <div className="mt-5">
         <label className="mb-2 block text-xs uppercase text-slate-500">
@@ -161,7 +177,7 @@ function SceneCard({
           disabled={isSearchingImage}
           className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isSearchingImage ? "Searching..." : "Search Image"}
+          {isSearchingImage ? "Refreshing..." : "Refresh Image"}
         </button>
 
         {imageError && (
